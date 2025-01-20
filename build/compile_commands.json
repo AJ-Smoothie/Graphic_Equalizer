@@ -83,11 +83,11 @@
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
    "-IE:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel\\esp8266.c",
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c",
    "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\libraries\\Adafruit_NeoPixel\\esp8266.c.o"
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c.o"
   ],
-  "file": "E:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel\\esp8266.c"
+  "file": "E:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c"
  },
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
@@ -139,11 +139,11 @@
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
    "-IE:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c",
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel\\esp8266.c",
    "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c.o"
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\libraries\\Adafruit_NeoPixel\\esp8266.c.o"
   ],
-  "file": "E:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c"
+  "file": "E:\\Dropbox\\Projects\\Arduino Sketchbook\\libraries\\Adafruit_NeoPixel\\esp8266.c"
  },
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
@@ -200,11 +200,11 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\PluggableUSB.cpp",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial.cpp",
    "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\PluggableUSB.cpp.o"
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\HardwareSerial.cpp.o"
   ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\PluggableUSB.cpp"
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial.cpp"
  },
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
@@ -260,6 +260,36 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\PluggableUSB.cpp",
+   "-o",
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\PluggableUSB.cpp.o"
+  ],
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\PluggableUSB.cpp"
+ },
+ {
+  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
+  "arguments": [
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_NANO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
    "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial0.cpp",
    "-o",
    "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\HardwareSerial0.cpp.o"
@@ -290,71 +320,11 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial.cpp",
-   "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\HardwareSerial.cpp.o"
-  ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial.cpp"
- },
- {
-  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
-  "arguments": [
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_NANO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
    "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial1.cpp",
    "-o",
    "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\HardwareSerial1.cpp.o"
   ],
   "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial1.cpp"
- },
- {
-  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
-  "arguments": [
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_NANO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial3.cpp",
-   "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\HardwareSerial3.cpp.o"
-  ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial3.cpp"
  },
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
@@ -470,6 +440,36 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial3.cpp",
+   "-o",
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\HardwareSerial3.cpp.o"
+  ],
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\HardwareSerial3.cpp"
+ },
+ {
+  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
+  "arguments": [
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_NANO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
    "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\WString.cpp",
    "-o",
    "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\WString.cpp.o"
@@ -502,6 +502,36 @@
    "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\WInterrupts.c.o"
   ],
   "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\WInterrupts.c"
+ },
+ {
+  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
+  "arguments": [
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_NANO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\Tone.cpp",
+   "-o",
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\Tone.cpp.o"
+  ],
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\Tone.cpp"
  },
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
@@ -587,93 +617,6 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\abi.cpp",
-   "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\abi.cpp.o"
-  ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\abi.cpp"
- },
- {
-  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
-  "arguments": [
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu11",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-MMD",
-   "-flto",
-   "-fno-fat-lto-objects",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_NANO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\hooks.c",
-   "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\hooks.c.o"
-  ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\hooks.c"
- },
- {
-  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
-  "arguments": [
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_NANO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\Tone.cpp",
-   "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\Tone.cpp.o"
-  ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\Tone.cpp"
- },
- {
-  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
-  "arguments": [
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_NANO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
    "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\USBCore.cpp",
    "-o",
    "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\USBCore.cpp.o"
@@ -716,6 +659,33 @@
    "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
    "-c",
    "-g",
+   "-Os",
+   "-w",
+   "-std=gnu11",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-MMD",
+   "-flto",
+   "-fno-fat-lto-objects",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_NANO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring.c",
+   "-o",
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\wiring.c.o"
+  ],
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring.c"
+ },
+ {
+  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
+  "arguments": [
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
+   "-c",
+   "-g",
    "-x",
    "assembler-with-cpp",
    "-flto",
@@ -732,6 +702,36 @@
    "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\wiring_pulse.S.o"
   ],
   "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring_pulse.S"
+ },
+ {
+  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
+  "arguments": [
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
+   "-MMD",
+   "-flto",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_NANO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\abi.cpp",
+   "-o",
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\abi.cpp.o"
+  ],
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\abi.cpp"
  },
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
@@ -754,11 +754,38 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring.c",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\hooks.c",
    "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\wiring.c.o"
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\hooks.c.o"
   ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring.c"
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\hooks.c"
+ },
+ {
+  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
+  "arguments": [
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
+   "-c",
+   "-g",
+   "-Os",
+   "-w",
+   "-std=gnu11",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-MMD",
+   "-flto",
+   "-fno-fat-lto-objects",
+   "-mmcu=atmega328p",
+   "-DF_CPU=16000000L",
+   "-DARDUINO=10607",
+   "-DARDUINO_AVR_NANO",
+   "-DARDUINO_ARCH_AVR",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
+   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring_digital.c",
+   "-o",
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\wiring_digital.c.o"
+  ],
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring_digital.c"
  },
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
@@ -790,17 +817,20 @@
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
   "arguments": [
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-gcc",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
    "-c",
    "-g",
    "-Os",
    "-w",
-   "-std=gnu11",
+   "-std=gnu++11",
+   "-fpermissive",
+   "-fno-exceptions",
    "-ffunction-sections",
    "-fdata-sections",
+   "-fno-threadsafe-statics",
+   "-Wno-error=narrowing",
    "-MMD",
    "-flto",
-   "-fno-fat-lto-objects",
    "-mmcu=atmega328p",
    "-DF_CPU=16000000L",
    "-DARDUINO=10607",
@@ -808,11 +838,11 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring_digital.c",
+   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\main.cpp",
    "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\wiring_digital.c.o"
+   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\main.cpp.o"
   ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring_digital.c"
+  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\main.cpp"
  },
  {
   "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
@@ -867,35 +897,5 @@
    "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\wiring_shift.c.o"
   ],
   "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\wiring_shift.c"
- },
- {
-  "directory": "C:\\Users\\ajrob\\AppData\\Local\\Programs\\Microsoft VS Code",
-  "arguments": [
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
-   "-c",
-   "-g",
-   "-Os",
-   "-w",
-   "-std=gnu++11",
-   "-fpermissive",
-   "-fno-exceptions",
-   "-ffunction-sections",
-   "-fdata-sections",
-   "-fno-threadsafe-statics",
-   "-Wno-error=narrowing",
-   "-MMD",
-   "-flto",
-   "-mmcu=atmega328p",
-   "-DF_CPU=16000000L",
-   "-DARDUINO=10607",
-   "-DARDUINO_AVR_NANO",
-   "-DARDUINO_ARCH_AVR",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
-   "-IC:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\eightanaloginputs",
-   "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\main.cpp",
-   "-o",
-   "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\build\\core\\main.cpp.o"
-  ],
-  "file": "C:\\Users\\ajrob\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\main.cpp"
  }
 ]
