@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#line 1 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\Spectrum_Analyzer.ino"
+#line 1 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\Graphic_Equalizer.ino"
 #include "pixel_driver.h"
 
 int strobePin = 2;
@@ -24,19 +24,19 @@ int rgbHoldTime = 25;
 unsigned long cMillis;
 unsigned long pMillis;
 
-#line 25 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\Spectrum_Analyzer.ino"
+#line 25 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\Graphic_Equalizer.ino"
 void setup();
-#line 42 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\Spectrum_Analyzer.ino"
+#line 42 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\Graphic_Equalizer.ino"
 void loop();
-#line 103 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\Spectrum_Analyzer.ino"
+#line 103 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\Graphic_Equalizer.ino"
 float fract(float x);
-#line 104 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\Spectrum_Analyzer.ino"
+#line 104 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\Graphic_Equalizer.ino"
 float mix(float a, float b, float t);
-#line 105 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\Spectrum_Analyzer.ino"
+#line 105 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\Graphic_Equalizer.ino"
 int * hsv2rgb(float h, float s, float b, int* rgb);
-#line 118 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\Spectrum_Analyzer.ino"
+#line 118 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\Graphic_Equalizer.ino"
 void getVolume();
-#line 25 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\Spectrum_Analyzer.ino"
+#line 25 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\Graphic_Equalizer.ino"
 void setup()
 {
   Serial.begin(115200);

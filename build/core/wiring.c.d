@@ -1,4 +1,4 @@
-E:\Dropbox\Projects\Arduino\ Sketchbook\Spectrum_Analyzer\build\core\wiring.c.o: \
+E:\Dropbox\Projects\Arduino\ Sketchbook\Graphic_Equalizer\build\core\wiring.c.o: \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino\wiring.c \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino\wiring_private.h \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino\Arduino.h \

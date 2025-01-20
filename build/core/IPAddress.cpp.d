@@ -1,4 +1,4 @@
-E:\Dropbox\Projects\Arduino\ Sketchbook\Spectrum_Analyzer\build\core\IPAddress.cpp.o: \
+E:\Dropbox\Projects\Arduino\ Sketchbook\Graphic_Equalizer\build\core\IPAddress.cpp.o: \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino\IPAddress.cpp \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/Arduino.h \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/binary.h \

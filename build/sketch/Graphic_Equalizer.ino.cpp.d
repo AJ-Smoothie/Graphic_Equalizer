@@ -1,5 +1,5 @@
-E:\Dropbox\Projects\Arduino\ Sketchbook\Spectrum_Analyzer\build\sketch\Spectrum_Analyzer.ino.cpp.o: \
- E:\Dropbox\Projects\Arduino\ Sketchbook\Spectrum_Analyzer\build\sketch\Spectrum_Analyzer.ino.cpp \
+E:\Dropbox\Projects\Arduino\ Sketchbook\Graphic_Equalizer\build\sketch\Graphic_Equalizer.ino.cpp.o: \
+ E:\Dropbox\Projects\Arduino\ Sketchbook\Graphic_Equalizer\build\sketch\Graphic_Equalizer.ino.cpp \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/Arduino.h \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/binary.h \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/WCharacter.h \
@@ -12,5 +12,5 @@ E:\Dropbox\Projects\Arduino\ Sketchbook\Spectrum_Analyzer\build\sketch\Spectrum_
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/Arduino.h \
  C:\Users\ajrob\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\eightanaloginputs/pins_arduino.h \
  c:\users\ajrob\appdata\local\arduino15\packages\arduino\hardware\avr\1.8.6\variants\standard\pins_arduino.h \
- E:\Dropbox\Projects\Arduino\ Sketchbook\Spectrum_Analyzer\build\sketch\pixel_driver.h \
+ E:\Dropbox\Projects\Arduino\ Sketchbook\Graphic_Equalizer\build\sketch\pixel_driver.h \
  E:\Dropbox\Projects\Arduino\ Sketchbook\libraries\Adafruit_NeoPixel/Adafruit_NeoPixel.h

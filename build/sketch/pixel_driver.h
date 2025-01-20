@@ -1,4 +1,4 @@
-#line 1 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\pixel_driver.h"
+#line 1 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\pixel_driver.h"
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
 

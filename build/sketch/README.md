@@ -1,3 +1,4 @@
+#line 1 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\README.md"
 # Graphic_Equalizer
 
 Currently, we are setting using pickColor to set the the color values to an array.

@@ -1,4 +1,4 @@
-#line 1 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Spectrum_Analyzer\\pixel_driver.cpp"
+#line 1 "E:\\Dropbox\\Projects\\Arduino Sketchbook\\Graphic_Equalizer\\pixel_driver.cpp"
 #include "Arduino.h"
 #include "pixel_driver.h"
 
