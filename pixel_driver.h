@@ -9,6 +9,7 @@ struct pixelObject
 {
   int volume;
   int volumeOffset = -2;
+  int volumePercent;
   uint32_t brightness;
   uint32_t color; // (R, G, B, W)
   uint32_t peakColor; // (R, G, B, W)

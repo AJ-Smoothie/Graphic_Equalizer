@@ -68,38 +68,32 @@ void pixelGrid::play(pixelObject *newTruck)
 
   for (int c = 0; c < 7; c++)
     { 
-      if (newTruck[c].volume < 0) continue; // if we aren't above the threshold, do nothing.
       if (newTruck[c].volume == lastTruck[c].volume) continue; // if nothing has changed, skip this iteration of the loop.
       //~ We are using C + 1 so that we don't use the first column, which is not used for volume.
       if (newTruck[c].volume > lastTruck[c].volume) 
         {
           // Don't freak out, C+1 is so that we don't show the first column as volumes
-          for (int i = lastTruck[c].volume; i <= newTruck[c].volume; i++)
+          // We are not doing <=, because we don't want to show the last pixel.
+          for (int i = lastTruck[c].volume; i < newTruck[c].volume; i++)
             {
-              _neoPixels->setPixelColor(xyRemap(c + 1, i), newTruck[c].color);              
+              _neoPixels->setPixelColor(xyRemap(c + 1, i), newTruck[c].color);
+              // instead of showing the last fluttery pixel, show the top pixel as the peak pixel.
+              //_neoPixels->setPixelColor(xyRemap(c + 1, newTruck[c].volume), newTruck[c].peakColor);
             }
         }
       else 
         {
-          for (int i = lastTruck[c].volume; i >= newTruck[c].volume; i--)
+          // this does not eliminate the last pixel, that's handled by if volume == 0
+          for (int i = lastTruck[c].volume; i > newTruck[c].volume; i--)
             {
               _neoPixels->setPixelColor(xyRemap(c + 1, i), packColor(0,0,0,0));
             }
-        }
-
-      // // if the new volume is less than our previous volume, then let's turn pixels off until we reach that lower value
-      // if (newTruck[c].volume < lastTruck[c].volume)
-      //   {
-      //     for (int i = lastTruck[c].volume; i > newTruck[c].volume; i--)
-      //       {
-      //         _neoPixels->setPixelColor(xyRemap(c + 1, i), packColor(0,0,0,0));
-      //       }
-      //   }         
+        }      
     }
 
   //* Now we can show the peaks
 
-  //playPeak(newTruck);
+  playPeak(newTruck);
 
   for (int i = 0; i < 7; i++) lastTruck[i] = newTruck[i]; // copy current pixel state to the old one.
 }
@@ -116,7 +110,7 @@ void pixelGrid::playPeak(pixelObject *truck)
   for (int c = 0; c < 7; c++)
     {
       // remove this at some point. Main should be controlling the colors
-      truck[c].peakColor = packColor(100, 0, 0, 0);
+      truck[c].peakColor = packColor(255, 0, 0, 0);
       // First let's find any peaks.
       if (truck[c].volume > truck[c].peak) 
         {

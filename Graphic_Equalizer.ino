@@ -36,7 +36,19 @@ void setup()
   delayMicroseconds(20);
   digitalWrite(rstPin, LOW);
 
-  //pixelArrayPtr = &(*pixel); // pixelArrayPtr points to the first pixelStruct (*pixel) is the address of the first pixel struct
+  //We're cheating here and setting colors for the columns
+  pixel[0].color = grid.packColor(0, 0, 0, 100);
+  pixel[1].color = grid.packColor(100, 0, 75, 0);
+  pixel[2].color = grid.packColor(0, 100, 0, 0);
+  pixel[3].color = grid.packColor(0, 0, 100, 0);
+  pixel[4].color = grid.packColor(50, 20, 0, 20);
+  pixel[5].color = grid.packColor(0, 0, 150, 70);
+  pixel[6].color = grid.packColor(0, 70, 50, 0);
+  
+  for (int i = 0; i < 7; i++)
+    {
+      pixel[i].peakColor = grid.packColor(255, 0, 0, 0);
+    }
 }
 
 void loop()
@@ -58,18 +70,7 @@ void loop()
 
   getVolume(); // gets the volume data for all 7 columns
 
-  //We're cheating here and setting colors for the columns
-  pixel[0].color = grid.packColor(0, 0, 0, 100);
-  pixel[1].color = grid.packColor(100, 0, 75, 0);
-  pixel[2].color = grid.packColor(0, 100, 0, 0);
-  pixel[3].color = grid.packColor(0, 0, 100, 0);
-  pixel[4].color = grid.packColor(50, 20, 0, 20);
-  pixel[5].color = grid.packColor(0, 0, 150, 70);
-  pixel[6].color = grid.packColor(0, 70, 50, 0);
-  // for (int i = 0; i < 7; i++)
-  //   {
-  //     pixel[i].color = grid.packColor(0, 0, 255, 0);
-  //   }
+  
 
   // play expects a pointer to the struct pixelObj. When we pass in an array, we are actually passing in the address of the first element
   // which is the same as passing in a pointer to the pixel struct.
@@ -123,32 +124,27 @@ void getVolume()
       delayMicroseconds(20);
       digitalWrite(strobePin, LOW);
 
-      /**
-       * The last pixel is very unstable because of the fluctuations in the ADC reading. Increasing sample count helps, 
-       * but then we loose time. So an easier way to go about it to just not show the last pixel. We do this by having the 
-       * column rise up to a volume of 8. This is technically the last pixel (pixel #9). But in our play function, we don't
-       * show pixels <=, just < then the greatest. So we are never showing the last pixel, hence our loudest volume is index
-       * 7 or pixel #8. 
-       * So now the math works out as such: The Largest ADC value we ever really see is ~1015. So we if take that number, 
-       * and divide it by (1000/8) it comes out to 8.15. We then truncate by casting to int, so our loudest volume is 8.
-       * Except we never actually show this last pixel :)
-       */
-
       float rawVolume = 0;
       for(int j = 0; j < sampleCount; j++) rawVolume += analogRead(multiPlexPin);
       rawVolume = (rawVolume / sampleCount); // val now contains the average reading.
-      pixel[i].volume = rawVolume / (1000.0 / 8.0); // convert the volume
-      pixel[i].volume += pixel[i].volumeOffset; // shift everything back by 1
-      // this extracts the decimal content of rawVolume. This is essentially the percentage the top pixel should be on.
-      // int decimalExtract = ((rawVolume - (int)rawVolume) * 100) + 0.5;
-      // int red = map(decimalExtract, 0, 100, 0, 255);
-      // pixel[i].brightness = grid.packColor(red, 0, 0, 0);
-      
-    
-      //if (pixel[i].volume > 8) pixel[i].volume = 8; // safeguard
+      pixel[i].volumePercent = rawVolume / (1000.0 / 100.0); // volume is percentage now!
+      if (pixel[i].volumePercent > 100) pixel[i].volumePercent = 100; // safeguard
 
-      //Serial.print("V: "); Serial.print(rawVolume); Serial.print("->"); Serial.print(pixel[i].volume); Serial.print("\t");
+      
+      const float threshold = .20; // amount required to light up the first tile      
+      pixel[i].volume = 0; // this will stay true if it's below the threshold.
+      if (pixel[i].volumePercent >= (int)round(threshold * 100))
+        {
+          // subtract 20% of pixel volume from itslef, creating an offset.
+          float offset = pixel[i].volumePercent - (pixel[i].volumePercent * threshold);
+          float divisorRatio = (100 - (100 * threshold)) / 7;
+          pixel[i].volume = offset / divisorRatio + 0.5; // 11.43
+          // volume is now succesfully remapped to 0-7, or 8 pixels.
+        }
+
+      // Serial.print("VolP: "); Serial.print(pixel[i].volumePercent); Serial.print("->"); 
+      // Serial.print(pixel[i].volume); Serial.print("\t"); 
     }
-  //Serial.println();
+  // Serial.println();
 }
 
