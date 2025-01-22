@@ -8,15 +8,14 @@ const int ledColumnns = 7;
 struct pixelObject
 {
   int volume;
-  int volumeOffset = -2;
   int volumePercent;
   uint32_t brightness;
   uint32_t color; // (R, G, B, W)
   uint32_t peakColor; // (R, G, B, W)
   int peak = 0;
   unsigned long startTime;
-
-  int holdTime; 
+  bool startFlag = 0;
+  int holdTime = 1000; 
   int interval;
 };
 
@@ -38,12 +37,6 @@ class pixelGrid
     // we are calling pixelobjects trucks. They are semis carying information.
     void play(pixelObject *newTruck); // we will pass in a pointer to the pixelObject
     void playPeak(pixelObject *truck); // Pass in a pointer to an array containing peaks
-    void playPeak(int column, pixelObject *pixel);
-      // int newBrightness[ledColumnns]; // max number currently
-      // int peakVal[ledColumnns]; //has to start at 1 because the volume for columns starts on 1
-      // int colInt = 0; // column interval
-      // unsigned long pMillis[ledColumnns];
-      // unsigned long cMills;
 
 
     uint32_t packColor(uint8_t r, uint8_t g, uint8_t b, uint8_t w); // packs RGBW into a 32 bit variable
@@ -53,15 +46,8 @@ class pixelGrid
     void clear();
     
     void updateGrid();
+
+  private:
+    
+
 };
-
-
-// for (int i = 0; i < 7; i++)
-//     {
-//       Serial.print("CH: ");
-//       Serial.print(i);
-//       Serial.print("-");
-//       Serial.print(ptr[i].volume);
-//       Serial.print("\t");
-//     }
-//   Serial.println();

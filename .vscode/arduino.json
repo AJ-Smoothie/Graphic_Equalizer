@@ -3,13 +3,13 @@
   "configuration": "cpu=atmega328old",
   "output": "build",
   "board": "arduino:avr:nano",
-  "programmer": "",
+  "programmer": "Arduino as ISP",
   "useProgrammer": false,
   "configurationRequired": true,
   "monitorPortSettings": {
     "port": "COM3",
     "baudRate": 115200,
-    "lineEnding": "\r\n",
+    "lineEnding": "none",
     "dataBits": 8,
     "parity": "none",
     "stopBits": "one"

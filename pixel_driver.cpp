@@ -27,115 +27,73 @@ void pixelGrid::test(int x, int y)
 
 void pixelGrid::clear() { _neoPixels->clear(); }
 
-void pixelGrid::playPeak(int column, pixelObject *pixel)
-{
-  // PixelOut peakLED; // creates an structure for the topmost LED  
-  // peakLED.RED = color_ptr->peakColor[red];
-  // peakLED.GREEN = color_ptr->peakColor[green];
-  // peakLED.BLUE = color_ptr->peakColor[blue];
-  // peakLED.XPOS = column;
-
-  // colInt = color_ptr->interval; // for ease of use
-    
-  // newBrightness[colInt] = color_ptr->brightnessInput;  //save the brightness of each channel
-  // //Serial.print(newBrightness[colInt]);
-
-  // if (newBrightness[colInt] > peakVal[colInt])
-  //   {
-  //     peakVal[colInt] = newBrightness[colInt];
-  //     pMillis[colInt] = millis();
-  //   }
- 
-  // if (millis() - pMillis[colInt] >= color_ptr->holdTime)
-  //   {
-  //     if (peakVal[colInt] > newBrightness[colInt])
-  //       {
-  //         peakVal[colInt]--; // decrement until we reach the new lower brightness level
-  //       }
-  //     else 
-  //       {
-  //         pMillis[colInt] = millis(); // reset timer now that the leds match
-  //       }      
-  //   } 
-  // peakLED.YPOS = peakVal[colInt]; //  sets the first fade pixel to be above the volume pixel
-  // showPixel(&peakLED);  
-
-}
 
 void pixelGrid::play(pixelObject *newTruck)
 { 
-  static pixelObject lastTruck[7]; // we are going to save the old pixel data here for comparison
+  static pixelObject lastTruck[7];
 
   for (int c = 0; c < 7; c++)
-    { 
-      if (newTruck[c].volume == lastTruck[c].volume) continue; // if nothing has changed, skip this iteration of the loop.
-      //~ We are using C + 1 so that we don't use the first column, which is not used for volume.
-      if (newTruck[c].volume > lastTruck[c].volume) 
+    {
+      //* We don't even need to worry about turning off the zeroth pixel. playPeaks takes care of that.
+      // // let's start by handling the 0 case
+      // //! This can probably go because we'll set the bottom to a peak color anyways.
+      if (newTruck[c].volume == 0)
         {
-          // Don't freak out, C+1 is so that we don't show the first column as volumes
-          // We are not doing <=, because we don't want to show the last pixel.
-          for (int i = lastTruck[c].volume; i < newTruck[c].volume; i++)
-            {
-              _neoPixels->setPixelColor(xyRemap(c + 1, i), newTruck[c].color);
-              // instead of showing the last fluttery pixel, show the top pixel as the peak pixel.
-              //_neoPixels->setPixelColor(xyRemap(c + 1, newTruck[c].volume), newTruck[c].peakColor);
-            }
+          _neoPixels->setPixelColor(xyRemap(c+1, 0), packColor(0,0,0,100));
+          continue; // skip this iteration of the loop.
         }
-      else 
-        {
-          // this does not eliminate the last pixel, that's handled by if volume == 0
-          for (int i = lastTruck[c].volume; i > newTruck[c].volume; i--)
-            {
-              _neoPixels->setPixelColor(xyRemap(c + 1, i), packColor(0,0,0,0));
-            }
-        }      
-    }
 
-  //* Now we can show the peaks
+      if (newTruck[c].volume > lastTruck[c].volume)
+        {
+          for (int i = lastTruck[c].volume; i <= newTruck[c].volume; i++)
+            _neoPixels->setPixelColor(xyRemap(c+1, i-1), newTruck[c].color); //! i-1 hides the last pixel
+        }
+      
+      if (newTruck[c].volume < lastTruck[c].volume)
+        {
+          for (int i = lastTruck[c].volume; i > newTruck[c].volume; i--)
+            _neoPixels->setPixelColor(xyRemap(c+1, i-1), packColor(0,0,0,0)); //! i-1 to match above
+        }
+    }
+  
+  for (int i = 0; i < 7; i++) lastTruck[i].volume = newTruck[i].volume;
 
   playPeak(newTruck);
-
-  for (int i = 0; i < 7; i++) lastTruck[i] = newTruck[i]; // copy current pixel state to the old one.
 }
 
 void pixelGrid::playPeak(pixelObject *truck)
 {
-  int interval = 3000;
-  /**
-   * First go and find all the peaks. If the volume is greater than the peak, then update the peak, and set the start time.
-   * If the volume is less than the peak, then we need to check if the peak has been held for the hold time. If it has, then
-   * we can start decrementing the peak until it matches the volume. If the volume is less than the peak, but the hold time has
-   * not been reached, then we just keep the peak at the same value.
-   */
+  //static bool startFlags[7];
+  //static int peaks[7];
+
   for (int c = 0; c < 7; c++)
     {
-      // remove this at some point. Main should be controlling the colors
-      truck[c].peakColor = packColor(255, 0, 0, 0);
-      // First let's find any peaks.
       if (truck[c].volume > truck[c].peak) 
         {
-          truck[c].peak = truck[c].volume; //& We actually don't need to do volume + 1, because we aren't showing the top pixel anyways
-          truck[c].startTime = millis();
-          _neoPixels->setPixelColor(xyRemap(c+1, truck[c].peak), truck[c].peakColor);     
+          truck[c].peak = truck[c].volume;
+          _neoPixels->setPixelColor(xyRemap(c+1, truck[c].peak), truck[c].peakColor);
         }
-      // // if volume was less than peak, let's check how long the peak has been on.
-      // else 
-      //   {
-      //     if (millis() - truck[c].startTime > interval)
-      //       {
-              
-      //         // we still have to do c+1 to avoid the first column.
-      //         for (int p = truck[c].peak; p > truck[c].volume; p--)
-      //          {
-      //           _neoPixels->setPixelColor(xyRemap(c+1, p), truck[c].peakColor);
-      //          }
-      //         //truck[c].peak = truck[c].volume + 1;
-      //       }
-      //   }
-    }
 
-  
-  
+      if (truck[c].volume < truck[c].peak) 
+        {
+          // if the volume dips below the peak, start our timer.
+          if (!truck[c].startFlag)
+            {
+              truck[c].startTime = millis();
+              truck[c].startFlag = true;
+            }
+          
+          if (millis() - truck[c].startTime > truck[c].holdTime)
+            {
+              for (int i = truck[c].peak; i > truck[c].volume; i--)
+                {
+                  _neoPixels->setPixelColor(xyRemap(c+1, i), packColor(0, 0, 0, 0));  // turn off peak pixel
+                  _neoPixels->setPixelColor(xyRemap(c+1, i-1), truck[c].peakColor);   // move peak pixel down
+                }
+              truck[c].startFlag = false;
+            }
+        }
+    }
 }
 
 byte pixelGrid::xyRemap(int x, int y)

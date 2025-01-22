@@ -22,6 +22,9 @@ int rgbHoldTime = 25;
 unsigned long cMillis;
 unsigned long pMillis;
 
+
+int testColumn = 0;
+
 void setup()
 {
   Serial.begin(115200);
@@ -61,14 +64,19 @@ void loop()
   //     pMillis = cMillis;
   //   }
 
-  // for (int i = 0; i < 9; i++)
-  //   {
-  //     grid.test(i, 7);
-  //     delay(500);
-  //   }
-  // grid.clear();
+  if (Serial.available())
+    {
+      char c = Serial.read();
+      switch (c)
+        {
+          case 'a': testColumn++; break;
+          case 'b': testColumn--; break;
+        }
+      Serial.println(testColumn);
+      pixel[3].volume = testColumn;
+    }
 
-  getVolume(); // gets the volume data for all 7 columns
+  //getVolume(); // gets the volume data for all 7 columns
 
   
 
@@ -137,14 +145,15 @@ void getVolume()
         {
           // subtract 20% of pixel volume from itslef, creating an offset.
           float offset = pixel[i].volumePercent - (pixel[i].volumePercent * threshold);
-          float divisorRatio = (100 - (100 * threshold)) / 7;
+          float divisorRatio = (100 - (100 * threshold)) / 8;
           pixel[i].volume = offset / divisorRatio + 0.5; // 11.43
-          // volume is now succesfully remapped to 0-7, or 8 pixels.
+          // volume is now succesfully remapped to 0-8. Zero is off, and you must
+          // cross 20% threshold to activate the first LED.
         }
 
-      // Serial.print("VolP: "); Serial.print(pixel[i].volumePercent); Serial.print("->"); 
-      // Serial.print(pixel[i].volume); Serial.print("\t"); 
+      Serial.print("VolP: "); Serial.print(pixel[i].volumePercent); Serial.print("->"); 
+      Serial.print(pixel[i].volume); Serial.print("\t"); 
     }
-  // Serial.println();
+  Serial.println();
 }
 
