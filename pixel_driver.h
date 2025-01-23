@@ -14,7 +14,7 @@ struct pixelObject
   uint32_t peakColor; // (R, G, B, W)
   int peak = 0;
   int counter = 0;
-  int increments = 300;
+  int increments = 75;
 };
 
 class pixelGrid
