@@ -1,5 +1,6 @@
 #include "pixel_driver.h"
 
+
 int strobePin = 2;
 int rstPin = 3;
 int multiPlexPin = A7;
@@ -16,6 +17,7 @@ unsigned long showStartTime; // this will keep track of everytime we call (show)
 
 float hue = 0.0;
 int rgbHoldTime = 25;
+float wVal = 0.0;
 unsigned long cMillis;
 unsigned long pMillis;
 
@@ -73,12 +75,12 @@ void loop()
   //     pixel[3].volume = testColumn;
   //   }
 
-  int rgb[3];
-  hsv2rgb(hue, 1.0, 0.5, rgb);
+  int rgbw[4];
+  hsv2rgbw(hue, 1.0, 0.5, rgbw);
   for (int c = 0; c < 7; c++)
     {
       // send over the sexiness for color changing
-      pixel[c].color = grid.packColor(rgb[0], rgb[1], rgb[2], 0);
+      pixel[c].color = grid.packColor(rgbw[0], rgbw[1], rgbw[2], rgbw[3]);
     }
 
 
@@ -124,16 +126,36 @@ void getVolume()
   // Serial.println();
 }
 
+// float fract(float x) { return x - int(x); }
+// float mix(float a, float b, float t) { return a + (b - a) * t; }
+// int* hsv2rgb(float h, float s, float b, int* rgb) 
+// {
+//   float val1 = s * mix(1.0, constrain(abs(fract(h + 1.0) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
+//   float val2 = s * mix(1.0, constrain(abs(fract(h + 0.6666666) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
+//   float val3 = s * mix(1.0, constrain(abs(fract(h + 0.3333333) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
+
+//   rgb[0] = (int)((1.0 - val1) * 255);
+//   rgb[1] = (int)((1.0 - val2) * 255);
+//   rgb[2] = (int)((1.0 - val3) * 255);
+//   return rgb;
+// }
+
 float fract(float x) { return x - int(x); }
 float mix(float a, float b, float t) { return a + (b - a) * t; }
-int* hsv2rgb(float h, float s, float b, int* rgb) 
+int* hsv2rgbw(float h, float s, float b, int* rgbw) 
 {
+  wVal += 0.2;
+  if (wVal >= 2.0) wVal = 0.0;
   float val1 = s * mix(1.0, constrain(abs(fract(h + 1.0) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
   float val2 = s * mix(1.0, constrain(abs(fract(h + 0.6666666) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
   float val3 = s * mix(1.0, constrain(abs(fract(h + 0.3333333) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
+  float val4 = s * mix(wVal, constrain(abs(fract(h + 0.3333333) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
+  
 
-  rgb[0] = (int)((1.0 - val1) * 255);
-  rgb[1] = (int)((1.0 - val2) * 255);
-  rgb[2] = (int)((1.0 - val3) * 255);
-  return rgb;
+  rgbw[0] = (int)((1.0 - val1) * 255);
+  rgbw[1] = (int)((1.0 - val2) * 255);
+  rgbw[2] = (int)((1.0 - val3) * 255);
+  rgbw[3] = (int)((1.0 - val4) * 255);
+  
+  return rgbw;
 }
