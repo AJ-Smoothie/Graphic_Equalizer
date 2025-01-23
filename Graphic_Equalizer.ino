@@ -4,24 +4,20 @@ int strobePin = 2;
 int rstPin = 3;
 int multiPlexPin = A7;
 int multiPlex = 0;
-int eqVolume[7];
-int sampleCount = 10;
 
 const int XLEN = 9;
 const int YLEN = 9;
 pixelGrid grid(6, XLEN, YLEN);
 
-
 // create a pixel object. The struct can be found in pixel Driver
 // we are also going to make a pointer so we can share the struct anywhere
 pixelObject *pixelArrayPtr, pixel[7]; 
-
+unsigned long showStartTime; // this will keep track of everytime we call (show)
 
 float hue = 0.0;
 int rgbHoldTime = 25;
 unsigned long cMillis;
 unsigned long pMillis;
-
 
 int testColumn = 0;
 
@@ -39,14 +35,14 @@ void setup()
   delayMicroseconds(20);
   digitalWrite(rstPin, LOW);
 
-  //We're cheating here and setting colors for the columns
-  pixel[0].color = grid.packColor(0, 0, 0, 100);
-  pixel[1].color = grid.packColor(100, 0, 75, 0);
-  pixel[2].color = grid.packColor(0, 100, 0, 0);
-  pixel[3].color = grid.packColor(0, 0, 100, 0);
-  pixel[4].color = grid.packColor(50, 20, 0, 20);
-  pixel[5].color = grid.packColor(0, 0, 150, 70);
-  pixel[6].color = grid.packColor(0, 70, 50, 0);
+  // //We're cheating here and setting colors for the columns
+  // pixel[0].color = grid.packColor(0, 0, 0, 100);
+  // pixel[1].color = grid.packColor(100, 0, 75, 0);
+  // pixel[2].color = grid.packColor(0, 100, 0, 0);
+  // pixel[3].color = grid.packColor(0, 0, 100, 0);
+  // pixel[4].color = grid.packColor(50, 20, 0, 20);
+  // pixel[5].color = grid.packColor(0, 0, 150, 70);
+  // pixel[6].color = grid.packColor(0, 70, 50, 0);
   
   for (int i = 0; i < 7; i++)
     {
@@ -56,76 +52,47 @@ void setup()
 
 void loop()
 {
-  // cMillis = millis();
-  // if (cMillis - pMillis > rgbHoldTime)
-  //   {     
-  //     hue += 0.01;
-  //     if (hue >= 1.0) hue = 0.0;      
-  //     pMillis = cMillis;
-  //   }
 
-  if (Serial.available())
-    {
-      char c = Serial.read();
-      switch (c)
-        {
-          case 'a': testColumn++; break;
-          case 'b': testColumn--; break;
-        }
-      Serial.println(testColumn);
-      pixel[3].volume = testColumn;
+  cMillis = millis();
+  if (cMillis - pMillis > rgbHoldTime)
+    {     
+      hue += 0.01;
+      if (hue >= 1.0) hue = 0.0;      
+      pMillis = cMillis;
     }
 
-  //getVolume(); // gets the volume data for all 7 columns
-
-  
-
-  // play expects a pointer to the struct pixelObj. When we pass in an array, we are actually passing in the address of the first element
-  // which is the same as passing in a pointer to the pixel struct.
-  grid.play(pixel); // sends the ptr
-
-
-
-  // pixel.columnColor[0] = 0;
-  // pixel.columnColor[1] = 0;
-  // pixel.columnColor[2] = 155;
-  // pixel.columnColor[3] = 0;
-
-  // for(int i = 0; i < XLEN; i++)
-  //   { 
-  //     color.interval = i;
-  //     color.brightnessInput = eqVolume[i];      
-  //     color.peakColor[0] = 255;
-  //     color.peakColor[1] = 0;
-  //     color.peakColor[2] = 0;
-  //     color.holdTime = 750;
-  //     hsv2rgb(hue, 1.0, 0.5, color.columnColor); // send over the sexiness for color changing
-  //     grid.play(i, color_ptr);
-  //     Serial.print(eqVolume[i]);
-  //     Serial.print(",\t");
+  // if (Serial.available())
+  //   {
+  //     char c = Serial.read();
+  //     switch (c)
+  //       {
+  //         case 'a': testColumn++; break;
+  //         case 'b': testColumn--; break;
+  //       }
+  //     Serial.print("Volume: "); Serial.println(testColumn);
+  //     pixel[3].volume = testColumn;
   //   }
-  grid.updateGrid();
-  //delay(1000);
-  
+
+  int rgb[3];
+  hsv2rgb(hue, 1.0, 0.5, rgb);
+  for (int c = 0; c < 7; c++)
+    {
+      // send over the sexiness for color changing
+      pixel[c].color = grid.packColor(rgb[0], rgb[1], rgb[2], 0);
+    }
+
+
+  getVolume(); // gets the volume data for all 7 columns
+  grid.play(pixel); // sends the ptr
+  grid.show();
 }
 
-float fract(float x) { return x - int(x); }
-float mix(float a, float b, float t) { return a + (b - a) * t; }
-int* hsv2rgb(float h, float s, float b, int* rgb) 
-{
-  float val1 = s * mix(1.0, constrain(abs(fract(h + 1.0) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
-  float val2 = s * mix(1.0, constrain(abs(fract(h + 0.6666666) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
-  float val3 = s * mix(1.0, constrain(abs(fract(h + 0.3333333) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
-
-  rgb[0] = (int)((1.0 - val1) * 255);
-  rgb[1] = (int)((1.0 - val2) * 255);
-  rgb[2] = (int)((1.0 - val3) * 255);
-  return rgb;
-}
 
 
 void getVolume()
 {
+  int sampleCount = 20;
+
   for (int i = 0; i < 7; i++)
     {
       digitalWrite(strobePin, HIGH); // advance strobe by 1
@@ -151,9 +118,22 @@ void getVolume()
           // cross 20% threshold to activate the first LED.
         }
 
-      Serial.print("VolP: "); Serial.print(pixel[i].volumePercent); Serial.print("->"); 
-      Serial.print(pixel[i].volume); Serial.print("\t"); 
+      // Serial.print("VolP: "); Serial.print(pixel[i].volumePercent); Serial.print("->"); 
+      // Serial.print(pixel[i].volume); Serial.print("\t"); 
     }
-  Serial.println();
+  // Serial.println();
 }
 
+float fract(float x) { return x - int(x); }
+float mix(float a, float b, float t) { return a + (b - a) * t; }
+int* hsv2rgb(float h, float s, float b, int* rgb) 
+{
+  float val1 = s * mix(1.0, constrain(abs(fract(h + 1.0) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
+  float val2 = s * mix(1.0, constrain(abs(fract(h + 0.6666666) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
+  float val3 = s * mix(1.0, constrain(abs(fract(h + 0.3333333) * 6.0 - 3.0) - 1.0, 0.0, 1.0), b);
+
+  rgb[0] = (int)((1.0 - val1) * 255);
+  rgb[1] = (int)((1.0 - val2) * 255);
+  rgb[2] = (int)((1.0 - val3) * 255);
+  return rgb;
+}

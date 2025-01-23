@@ -29,71 +29,45 @@ void pixelGrid::clear() { _neoPixels->clear(); }
 
 
 void pixelGrid::play(pixelObject *newTruck)
-{ 
-  static pixelObject lastTruck[7];
+{
+  _neoPixels->clear(); // erases all the pixels, but doesn't SHOW them!
 
   for (int c = 0; c < 7; c++)
     {
-      //* We don't even need to worry about turning off the zeroth pixel. playPeaks takes care of that.
-      // // let's start by handling the 0 case
-      // //! This can probably go because we'll set the bottom to a peak color anyways.
-      if (newTruck[c].volume == 0)
+      //& Since we are doing < and not <=, we aren't showing the top pixel.
+      for (int i = 0; i < newTruck[c].volume; i++)
         {
-          _neoPixels->setPixelColor(xyRemap(c+1, 0), packColor(0,0,0,100));
-          continue; // skip this iteration of the loop.
-        }
-
-      if (newTruck[c].volume > lastTruck[c].volume)
-        {
-          for (int i = lastTruck[c].volume; i <= newTruck[c].volume; i++)
-            _neoPixels->setPixelColor(xyRemap(c+1, i-1), newTruck[c].color); //! i-1 hides the last pixel
-        }
-      
-      if (newTruck[c].volume < lastTruck[c].volume)
-        {
-          for (int i = lastTruck[c].volume; i > newTruck[c].volume; i--)
-            _neoPixels->setPixelColor(xyRemap(c+1, i-1), packColor(0,0,0,0)); //! i-1 to match above
+          _neoPixels->setPixelColor(xyRemap(c+1, i), newTruck[c].color);
         }
     }
-  
-  for (int i = 0; i < 7; i++) lastTruck[i].volume = newTruck[i].volume;
-
   playPeak(newTruck);
 }
 
 void pixelGrid::playPeak(pixelObject *truck)
 {
-  //static bool startFlags[7];
-  //static int peaks[7];
-
   for (int c = 0; c < 7; c++)
     {
+      // always show the peak.
+      _neoPixels->setPixelColor(xyRemap(c+1, truck[c].peak), truck[c].peakColor);
+      // if there is higher peak, get it and save it.
       if (truck[c].volume > truck[c].peak) 
         {
           truck[c].peak = truck[c].volume;
-          _neoPixels->setPixelColor(xyRemap(c+1, truck[c].peak), truck[c].peakColor);
+          truck[c].counter = 0; // we just go an update, so reset counter
         }
-
-      if (truck[c].volume < truck[c].peak) 
+      // if the volume is lower than the peak, then start incrementing the counter
+      if (truck[c].volume < truck[c].peak) truck[c].counter++;
+      if (truck[c].counter >= truck[c].increments)
         {
-          // if the volume dips below the peak, start our timer.
-          if (!truck[c].startFlag)
+          truck[c].peak = truck[c].volume;
+          truck[c].counter = 0;
+          for (int i = truck[c].peak; i > truck[c].volume; i--)
             {
-              truck[c].startTime = millis();
-              truck[c].startFlag = true;
-            }
-          
-          if (millis() - truck[c].startTime > truck[c].holdTime)
-            {
-              for (int i = truck[c].peak; i > truck[c].volume; i--)
-                {
-                  _neoPixels->setPixelColor(xyRemap(c+1, i), packColor(0, 0, 0, 0));  // turn off peak pixel
-                  _neoPixels->setPixelColor(xyRemap(c+1, i-1), truck[c].peakColor);   // move peak pixel down
-                }
-              truck[c].startFlag = false;
+              _neoPixels->setPixelColor(xyRemap(c+1, i), packColor(0, 0, 0, 0));
             }
         }
     }
+   
 }
 
 byte pixelGrid::xyRemap(int x, int y)
@@ -137,8 +111,4 @@ int pixelGrid::decimalExtract(float value)
   //Serial.println(); 
 }
 
-void pixelGrid::updateGrid()
-{
-  _neoPixels->show();
-  //_neoPixels->clear();
-}
+void pixelGrid::show() { _neoPixels->show(); }

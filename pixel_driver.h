@@ -13,10 +13,8 @@ struct pixelObject
   uint32_t color; // (R, G, B, W)
   uint32_t peakColor; // (R, G, B, W)
   int peak = 0;
-  unsigned long startTime;
-  bool startFlag = 0;
-  int holdTime = 1000; 
-  int interval;
+  int counter = 0;
+  int increments = 300;
 };
 
 class pixelGrid
@@ -37,6 +35,7 @@ class pixelGrid
     // we are calling pixelobjects trucks. They are semis carying information.
     void play(pixelObject *newTruck); // we will pass in a pointer to the pixelObject
     void playPeak(pixelObject *truck); // Pass in a pointer to an array containing peaks
+    
 
 
     uint32_t packColor(uint8_t r, uint8_t g, uint8_t b, uint8_t w); // packs RGBW into a 32 bit variable
@@ -45,7 +44,7 @@ class pixelGrid
     void test(int x, int y); 
     void clear();
     
-    void updateGrid();
+    void show();
 
   private:
     
